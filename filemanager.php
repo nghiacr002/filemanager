@@ -13,10 +13,10 @@
 <?php
     define("AUTHENTICATE_USER","");
     define("AUTHENTICATE_PASSWORD","");
+    define("RESTRICT_ACCESS_CHILD_FOLDER_ONLY",true);
 ?>
 <?php 
    
-    
     //include_once "function.php";
     $FM = new FileManager();
     if( defined('AUTHENTICATE_USER') && AUTHENTICATE_USER !="")
@@ -1053,9 +1053,18 @@
                     }, function(data) {
                         data = $.parseJSON(data);
                         if (typeof(data) != "undefined") {
-                            var _html = FILE_MANAGER._buildRightTreeViewHTML(data.files);
-                            $(root).html(_html);
+                            if (data.status == "error") {
+                                //code
+                                //alert(data.message);
+                            }else{
+                                var _html = FILE_MANAGER._buildRightTreeViewHTML(data.files);
+                                $(root).html(_html);
+                            }
+                           
                         }
+                        
+                        $(root).removeClass('wait');
+                        $(root).find('tr').removeClass('wait');
                     });
                 },
                 buildLeftTreeView: function(rootElement, path) {
@@ -1066,18 +1075,24 @@
                     }, function(data) {
                         data = $.parseJSON(data);
                         if (typeof(data) != "undefined") {
-                            var _html = FILE_MANAGER._buildLeftTreeViewHTML(data.files);
-                            if (_html != "") {
-                                $(rootElement).append(_html);
-                            } else {
-                                var _rightHTML = FILE_MANAGER._buildRightTreeViewHTML(data.files);
-                                $('#table-list-detail tbody').html(_rightHTML);
+                             if (data.status == "error") {
+                                //code
+                                //alert(data.message);
+                            }else{
+                                var _html = FILE_MANAGER._buildLeftTreeViewHTML(data.files);
+                                if (_html != "") {
+                                    $(rootElement).append(_html);
+                                } else {
+                                    var _rightHTML = FILE_MANAGER._buildRightTreeViewHTML(data.files);
+                                    $('#table-list-detail tbody').html(_rightHTML);
+                                }
+                
+                                $(rootElement).find('ul:hidden').slideDown({
+                                    duration: 500,
+                                    easing: null
+                                });
                             }
-            
-                            $(rootElement).find('ul:hidden').slideDown({
-                                duration: 500,
-                                easing: null
-                            });
+                            
                         }
                         $(rootElement).removeClass('wait');
                     });
@@ -1302,9 +1317,33 @@ class FileManager
 	private $_sCurrentPath;
 	private $_mErrors;
 	private $_bMoving = false;
+    private $_sFileLocation = "";
 	public function __construct()
 	{
 		$this->_sCurrentPath = dirname(__FILE__);
+        if(defined('RESTRICT_ACCESS_CHILD_FOLDER_ONLY') && RESTRICT_ACCESS_CHILD_FOLDER_ONLY)
+        {
+            $this->_sFileLocation = dirname(__FILE__);
+        }
+        $sPath = isset($_POST['path']) ? $_POST['path'] : false;
+        if(defined('RESTRICT_ACCESS_CHILD_FOLDER_ONLY') && RESTRICT_ACCESS_CHILD_FOLDER_ONLY && $sPath)
+        {
+            $sTmpPath = str_replace($this->_sFileLocation,'',$sPath);
+            if($sTmpPath  == $sPath)
+            {
+                if($this->isAjaxCall())
+                {
+                    echo json_encode(array(
+                        'status' => "error",
+                        'message' => 'You cannot access'
+                    ));exit;
+                }
+                else
+                {
+                    exit("INVALID PATH");
+                }
+            }
+        }
 	}
     public function makeURL()
     {
