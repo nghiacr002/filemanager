@@ -334,7 +334,7 @@
             </div>
         </nav>
           <div class="container-fluid " id="manager-file-editor" style="padding-right:0;">
-            <textarea id="simple-editor" file="<?php echo $_GET['editor'];?>"><?php echo $FM->readFileContent($_GET['editor']);?></textarea>
+            <textarea id="simple-editor" file="<?php echo $_GET['editor'];?>"><?php echo htmlentities($FM->readFileContent($_GET['editor']));?></textarea>
           </div>
         <?php else:?>
         <!-- Fixed navbar -->
