@@ -383,10 +383,12 @@
                 <div class="left-list">
                        <?php 
                          $sHTML =  $FM->renderFolderView($aFiles,false);
+						 
                          if(empty($sHTML))
                          {
-                             $FM->renderFolderView($FM->scanDir(dirname($FM->getPath()),false),true);
+                             $sHTML = $FM->renderFolderView($FM->scanDir(dirname($FM->getPath()),false),false);
                          }
+echo $sHTML;
                        ?>
                 </div>
             </div>
