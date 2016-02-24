@@ -22,5 +22,5 @@ Change values of these definations
 
 Demo
 ----------------------
-URL : http://hiweb.vn/demo/filemanager.php
+URL : http://hiweb.vn/demo/f/filemanager.php
 
