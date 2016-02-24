@@ -11,7 +11,7 @@
     **/
 ?>
 <?php
-    define("AUTHENTICATE_USER","hello");
+    define("AUTHENTICATE_USER","");
     define("AUTHENTICATE_PASSWORD","");
 ?>
 <?php 
