@@ -15,14 +15,11 @@
     define("AUTHENTICATE_PASSWORD","");
 ?>
 <?php 
-    if(!session_id())
-    {
-        session_start();
-    }
+   
     
     //include_once "function.php";
     $FM = new FileManager();
-    if( !empty(AUTHENTICATE_USER))
+    if( defined('AUTHENTICATE_USER') && AUTHENTICATE_USER !="")
     {
         $FM->requireLogin();
     }
