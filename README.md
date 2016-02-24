@@ -1,12 +1,5 @@
 # File Manager
-PHP File Manager Lite
-
-========================
-
 FM is an open-source file manager released under MIT license. It is using Boostrap 3 template and Jquery as external resources.
-
-Support
--------
 
 Main features
 -------------
