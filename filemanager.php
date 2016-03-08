@@ -11,8 +11,8 @@
     **/
 ?>
 <?php
-    define("AUTHENTICATE_USER","");
-    define("AUTHENTICATE_PASSWORD","");
+    define("AUTHENTICATE_USER","nice");
+    define("AUTHENTICATE_PASSWORD","loremnice");
     define("RESTRICT_ACCESS_CHILD_FOLDER_ONLY",true);
 ?>
 <?php 
@@ -1855,56 +1855,59 @@ class FileManager
                 $this->setPath($sPath);    
             }
 		}
-		$mData = scandir($sPath, SCANDIR_SORT_ASCENDING);
+		$oHandler = @opendir($sPath);
+		
 		$aResult = array(
 			'folder' => array() ,
 			'file' => array() ,
 		);
-		if (count($mData)) {
-			foreach ($mData as $key => $hFile)
-			{
-				if ($hFile == ".") {
-					continue;
-				}
-				$aFile = array(
-					'title' => $hFile,
-					'path' => $sPath,
-					'type' => 'folder',
-					'time' => 'N/A',
-					'size' => 'N/A',
-					'perm' => '',
-					'full_path' => $sPath ,
-					'file_size_view' => 'N/A',
-					'time_view' => 'N/A',
-				);
-				switch ($hFile) {
-				case ".":
+		if($oHandler){
+			 while (false !== ($hFile = readdir($oHandler))) 
+			 {
+				if ($hFile == "." || $hFile == "..") {
+						continue;
+					}
+					$aFile = array(
+						'title' => $hFile,
+						'path' => $sPath,
+						'type' => 'folder',
+						'time' => 'N/A',
+						'size' => 'N/A',
+						'perm' => '',
+						'full_path' => $sPath ,
+						'file_size_view' => 'N/A',
+						'time_view' => 'N/A',
+					);
+					switch ($hFile) {
+					case ".":
+						break;
+
+					case "..";
+						$aFile['path'] = dirname($aFile['path']);
+						$aFile['full_path'] = $aFile['path'];
 					break;
 
-				case "..";
-					$aFile['path'] = dirname($aFile['path']);
-					$aFile['full_path'] = $aFile['path'];
-				break;
-
-				default:
-					$sFullPath = $sPath . DIRECTORY_SEPARATOR . $hFile;
-					if (is_dir($sFullPath)) {
-						$aFile['type'] = "folder";
+					default:
+						$sFullPath = $sPath . DIRECTORY_SEPARATOR . $hFile;
+						if (is_dir($sFullPath)) {
+							$aFile['type'] = "folder";
+						}
+						else {
+							$aFile['type'] = "file";
+							$aFile['time'] = filectime($sFullPath);
+							$aFile['size'] = @filesize($sFullPath);
+							$aFile['file_size_view'] = $this->convertFileSize($aFile['size']);
+							$aFile['time_view'] = $this->getTime($aFile['time']);
+						}
+						$aFile['full_path'] = $sFullPath;
+						break;
 					}
-					else {
-						$aFile['type'] = "file";
-						$aFile['time'] = filectime($sFullPath);
-						$aFile['size'] = @filesize($sFullPath);
-						$aFile['file_size_view'] = $this->convertFileSize($aFile['size']);
-						$aFile['time_view'] = $this->getTime($aFile['time']);
-					}
-					$aFile['full_path'] = $sFullPath;
-					break;
-				}
-				$aFile['perm'] = $this->getPermision($aFile['full_path']);
-				$aResult[$aFile['type']][] = $aFile;
+					$aFile['perm'] = $this->getPermision($aFile['full_path']);
+					$aResult[$aFile['type']][] = $aFile;
 			}
+			@closedir($oHandler);
 		}
+		
 		return array_merge($aResult['folder'], $aResult['file']);
 	}
 	public function renderFolderView($aFiles, $bEcho = false)
