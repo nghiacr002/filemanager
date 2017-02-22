@@ -15,8 +15,8 @@
     define("AUTHENTICATE_PASSWORD","loremnice");
     define("RESTRICT_ACCESS_CHILD_FOLDER_ONLY",true);
 ?>
-<?php 
-   
+<?php
+
     //include_once "function.php";
     $FM = new FileManager();
     if( defined('AUTHENTICATE_USER') && AUTHENTICATE_USER !="")
@@ -30,7 +30,7 @@
     }
     else
     {
-        
+
         if(isset($_GET['download']) && !empty($_GET['download']))
         {
             $FM->download($_GET['download']);
@@ -60,7 +60,7 @@
         <title>File Manager 1.0</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-       
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -73,12 +73,12 @@
                 position: relative;
                 min-height: 100%;
                 height:100%;
-               
+
                 margin: 0;
                 padding: 0;
             }
             body {
-            
+
                 height: 87%;
                 margin: 0;
                 min-height: 87%;
@@ -88,27 +88,27 @@
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-            
+
                 height: 30px;
                 background-color: #f5f5f5;
             }
-            
+
             .clear{
                 clear: both;
             }
-            
+
             body > .container {
                 padding: 60px 15px 0;
             }
             .container .text-muted {
                 margin: 20px 0;
             }
-            
+
             .footer > .container {
                 padding-right: 15px;
                 padding-left: 15px;
             }
-            
+
             code {
                 font-size: 80%;
             }
@@ -134,7 +134,7 @@
                 overflow-y: auto;
                 padding: 0 4px 0 4px !important;
             }
-            
+
             .current-path{
                 width:100%;
             }
@@ -144,7 +144,7 @@
             .li-folder,
             .folder{
                 background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADqElEQVRIiZ2UTWhcVRTHf/fNm06SSei0aa1F0ahJraCkuOgiiMaNoFiqriQgdKsgdKFLUZeC0FUJ7lwUBXGRjVA3Wr/Q6CIBwUajITZYM+1kZpJ0vt679xwX983LG5tJqhcu7/LgnN/5/8+9x6gqqwtv1cRGJduyRI0IcQpwBb++Sr6LQB1YnDxzsc4+S1UBMKrK9aX39dj4FFvlZTbLyxSGSuQLhxkYOUpjYx2A1lYVZ2PaW1VcHAGsJtB3J89cXOwHCAGQOoH7ndLdY5SOn2S78ifV679QKf/FkXtOMHqoCOOP9SSIWo2xrfLa2LWf508BD/RT4gEKGq9DvA7BQYZL9zF8+BnqN//mh8/meG7q+E7E0BEA8qWHGL1/gl9/+m5sL6vCHknq1WDraO4uDo6OE1vpjWhWAAiaFdz48zTb8V75uwBFRbtH/KkFOeftiB1hLiAITE+wiqPdsfsDVEElAWkaDuoBzimB0V0BuhOwlwJQUV95GiAgCUCU3C6JVOW2f7sDFEQ0safrkRIkCaxT8uHtwZoUsC9AuwqSxChgJE1gneAk+P8AVHcUpFYoJlEQW8GJIgrGQLcTd25RVoH6r8n0wFrBOV9EYECNwfwXBar4+ZNVYDStMLKCdV6BKhijGHNnCoLEDVQUEUFEEee3SgKIxdvkFCeKE3BCeo3nZmfemZudOdUXoGiaWJ0iThARajdupAAnYNPkiksKePzJKR585MTbwJd9LfJvSr09Jk84dIxvL3+DinKwGBKGOQYKoe+DyTS6do3S0DClkxOsXP2t1N8i2FFASJAvYq0wWPD3ZXAgjxOInWIz28gwI2OvdcfArivsJvc9UAInqfedSMgFSmyV2CmBQNBVYMAk82uvZocAzkrSVEWNpuOiHTlygSGKhQPWX9EsIHBdQP95FAK0WzHFwbx/bJK5npEQBIbIehU+uWKMwRjYbGywsv4jD+8oCIAeOQFAvda6svLHBjZ2ydj2FW3e6tBsx0RWiGIhsprCIquUb21waelSZkByCBgh09sA4ImXPnj6Znn7w6WrZQ9JKlpZq16u1JrrlWqTcrVBfbtDq+OIrBDHwtFYed0UU4uefWpiFGhkVRhVLxlgbnbmQnF46PyjpyeZ/+J7Xnj1o9PAwtzszL3ANHAWmD6Qz5UGCiGDhTy1rRZR7NhuRAuvvPHpFNDO9qUHkEDOARfaHTv/8vlPXgRa/25c8mqngbPLqxtrb773+cfA10n1ZAH/AGczgzxfHZhwAAAAAElFTkSuQmCC');
-               
+
             }
             .li-folder{
                 background-repeat: no-repeat;
@@ -185,7 +185,7 @@
                 background-color: #bdf;
                 cursor: pointer;
             }
-            
+
             ul.tree-items-holder li .file-name {
                 color: #333;
                 display: block;
@@ -293,7 +293,7 @@
                 font-size:11px;
             }
             #manager-file-editor{
-                
+
                 height: 100%;
                 margin-bottom: 0;
                 margin-top: 52px;
@@ -328,7 +328,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="javascript:void(0);" class="ajax_request" onclick="FILE_MANAGER.saveFile(this);"><i class="fa fa-save"></i> Save File</a></li>
                         <li><a href="javascript:void(0);" class="ajax_request" onclick="FILE_MANAGER.reloadFile(this);"><i class="fa fa-refresh"></i> Reload File</a></li>
-                        
+
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -362,7 +362,7 @@
                         <li><a href="javascript:void(0);" class="ajax_request" onclick="FILE_MANAGER.upload(this);" max="<?php echo $FM->getMaximumFileUploadSize();?>"><i class="fa fa-cloud-upload"></i> Upload</a></li>
                         <li><a href="javascript:void(0);" class="ajax_request" onclick="FILE_MANAGER.download(this);"><i class="fa fa-cloud-download"></i> Download</a></li>
                         <li><a href="javascript:void(0);" class="ajax_request" onclick="FILE_MANAGER.reload(this);"><i class="fa fa-refresh"></i> Reload</a></li>
-                        
+
                         <!--<li><a href="?ac=ftp" class="ajax_request"><i class="fa fa-unlock"></i> FTP Login</a></li>-->
                         <li class="li-devision">&nbsp;</li>
                         <li><a href="javascript:void(0);" class="ajax_request" onclick="FILE_MANAGER.compress(this);"><i class="fa fa-compress"></i> Compress</a></li>
@@ -379,11 +379,11 @@
         <!-- Begin page content -->
         <div class="container-fluid " id="file-manager-main-view">
              <div class="col-xs-2" id="file-treeview">
-                
+
                 <div class="left-list">
-                       <?php 
+                       <?php
                          $sHTML =  $FM->renderFolderView($aFiles,false);
-						 
+
                          if(empty($sHTML))
                          {
                              $sHTML = $FM->renderFolderView($FM->scanDir(dirname($FM->getPath()),false),false);
@@ -394,8 +394,8 @@ echo $sHTML;
             </div>
             <div class="col-xs-10" id="file-list">
                 <div class="table-respsonsive">
-                    
-                   
+
+
                     <table class="table table-striped" id="table-list-detail">
                        <thead class="fixed-header">
                             <tr class="header">
@@ -432,14 +432,14 @@ echo $sHTML;
                                     <td class="file-perm">
                                         <?php echo $aFile['perm'];?>
                                     </td>
-                                   
+
                                   </tr>
                              <?php endforeach;?>
                         </tbody>
                     </table>
                 </div>
             </div>
-            
+
         </div>
         <?php endif;?>
         <footer class="footer">
@@ -450,8 +450,8 @@ echo $sHTML;
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-         <script src="main.js"></script>
-         
+         <!-- <script src="main.js"></script> -->
+
          <script>
             FILE_MANAGER = {
                 currentPath: "",
@@ -488,18 +488,18 @@ echo $sHTML;
                     $('#table-list-detail').on('dblclick', 'tr.tr-file-holder', function() {
                         var _self = $(this);
                         var _path = _self.attr('path');
-                    
+
                         if (typeof(_path) != "undefined") {
                             if (_self.attr('type') == "folder") {
                                 _self.addClass('wait');
                                 $('#path_value').html(_path);
                                 FILE_MANAGER.buildRightList('#table-list-detail tbody', _path);
                                 if($('.tree-items-holder li').length <=0){
-                                    FILE_MANAGER.buildLeftTreeView($('.tree-items-holder'), _path);    
+                                    FILE_MANAGER.buildLeftTreeView($('.tree-items-holder'), _path);
                                 }else{
-                                    
+
                                 }
-                                
+
                                 $("input.check_all").prop("checked", false);
                             } else {
                                 //console.log('not implemented for file viewer');
@@ -523,7 +523,7 @@ echo $sHTML;
                         $(this).find("input.check_all_item").trigger('click');
                         return false;
                     });
-            
+
                 },
                 newFolder: function(){
                     var _htmlBody = '<div><p>New Folder Name <span class="example">(ex: abc, folder1, folder2)</span></p><p><input type="text" name="file_name" value="" class="form-control" id="form_file_name"/></p></div>';
@@ -559,7 +559,7 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
@@ -598,7 +598,7 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
@@ -608,7 +608,7 @@ echo $sHTML;
                     var size = $(e).attr('max');
                     _htmlBody += "<div style='margin-top:10px;'>You can upload file has maximum size " + size + "</div>";
                     _htmlBody += "<div style='margin-top:10px;' class='field_upload' ><iframe name=\"frame-upload\" style=\"display:none;\" id=\"frame-upload\"></iframe><form target=\"frame-upload\" action=\"?ac=upload\" method=\"post\" enctype=\"multipart/form-data\" id=\"form-upload\"><input type='file' name='file'/><p style=\"margin-top:10px;\">New file will be created in: </p><p><input type='text' name=\"path\" id=\"form_file_path\" value=\""+FILE_MANAGER.currentPath+"/\" class=\"form-control\"/></p></div>";
-                    
+
                     EBoostrapModal.show({
                         title: 'Upload File',
                         //hasCloseButton: false,
@@ -639,7 +639,7 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
@@ -661,7 +661,7 @@ echo $sHTML;
                 },
                 goTo: function(){
                     var _htmlBody = '';
-                    
+
                     _htmlBody += "<div style='margin-top:10px;'><p>Folder Path</p><p><input type='text' name=\"\" id=\"compress_file_path\" value=\""+FILE_MANAGER.currentPath+"/\"/></p></div>";
                     EBoostrapModal.show({
                         title: 'Go To Folder',
@@ -683,12 +683,12 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
-                    
-                    
+
+
                     FILE_MANAGER.ContextMenu.remove();
                 },
                 copy: function(moving) {
@@ -699,7 +699,7 @@ echo $sHTML;
                     }else{
                         moving = 1;
                     }
-                    
+
                     var _items = this.getSelectedItems(true);
                     if (_items.length <= 0) {
                         alert("No selected item to do this action");
@@ -741,12 +741,12 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
-                    
-                    
+
+
                     FILE_MANAGER.ContextMenu.remove();
                 },
                 paste: function() {
@@ -766,7 +766,7 @@ echo $sHTML;
                             title: 'Removing...',
                             body: _htmlBody,
                             buttons: {
-                                
+
                             },
                             onDisplay: function(){
                                 $.post('?ac=remove&ajax=1', {path: FILE_MANAGER.currentPath, data:_items }, function( data ) {
@@ -778,7 +778,7 @@ echo $sHTML;
                             }
                         });
                     }
-                    
+
                     FILE_MANAGER.ContextMenu.remove();
                 },
                 edit: function(){
@@ -799,8 +799,8 @@ echo $sHTML;
                         var win = window.open("?editor=" + link, '_blank');
                         win.focus();
                     }
-                    
-                    
+
+
                     FILE_MANAGER.ContextMenu.remove();
                 },
                 show: function() {
@@ -865,7 +865,7 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
@@ -913,7 +913,7 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
@@ -935,7 +935,7 @@ echo $sHTML;
                         title: 'Uncompressing...',
                         body: _htmlBody,
                         buttons: {
-                            
+
                         },
                         onDisplay: function(){
                             $.post('?ac=uncompress&ajax=1', {path: FILE_MANAGER.currentPath, data:_items }, function( data ) {
@@ -946,7 +946,7 @@ echo $sHTML;
                             });
                         }
                     });
-                    
+
                     FILE_MANAGER.ContextMenu.remove();
                 },
                 compress: function(element) {
@@ -991,11 +991,11 @@ echo $sHTML;
                                 action: function(){
                                     EBoostrapModal.remove();
                                 },
-                                
+
                             }
                         }
                     });
-                    
+
                     FILE_MANAGER.ContextMenu.remove();
                 },
                 saveFile: function(v){
@@ -1006,14 +1006,14 @@ echo $sHTML;
                         title: 'Saving...',
                         body: _htmlBody,
                         buttons: {
-                            
+
                         },
                         onDisplay: function(){
                             $.post('?ac=saveFile&ajax=1', {content: _vl, file:_file }, function( data ) {
                                 data = $.parseJSON(data);
                                 alert(data.message);
                                 EBoostrapModal.remove();
-                                
+
                             });
                         }
                     });
@@ -1033,7 +1033,7 @@ echo $sHTML;
                         $('#message-holder').removeClass('wait');
                     }
                 },
-               
+
                 getSelectedItems: function(v) {
                     if (typeof(v) == "undefined") {
                         v = false;
@@ -1062,15 +1062,15 @@ echo $sHTML;
                                 var _html = FILE_MANAGER._buildRightTreeViewHTML(data.files);
                                 $(root).html(_html);
                             }
-                           
+
                         }
-                        
+
                         $(root).removeClass('wait');
                         $(root).find('tr').removeClass('wait');
                     });
                 },
                 buildLeftTreeView: function(rootElement, path) {
-            
+
                     $(rootElement).addClass('wait');
                     $.post('?ac=scan&ajax=1', {
                         path: path
@@ -1088,13 +1088,13 @@ echo $sHTML;
                                     var _rightHTML = FILE_MANAGER._buildRightTreeViewHTML(data.files);
                                     $('#table-list-detail tbody').html(_rightHTML);
                                 }
-                
+
                                 $(rootElement).find('ul:hidden').slideDown({
                                     duration: 500,
                                     easing: null
                                 });
                             }
-                            
+
                         }
                         $(rootElement).removeClass('wait');
                     });
@@ -1109,7 +1109,7 @@ echo $sHTML;
                         } else {
                             _tds.push('<td style="width: 26px;text-align: center"><input type="checkbox" class="check_all_item" value="' + _item.full_path + '" name="check_all" autocomplete="off"></td>');
                         }
-            
+
                         _tds.push('<td  style="width: 26px;text-align: center"><i class="file-item ' + _item.type + '"></i></td>');
                         _tds.push('<td class="file-title">' + _item.title + '</td>');
                         _tds.push('<td class="file-size">' + _item.file_size_view + '</td>');
@@ -1147,7 +1147,7 @@ echo $sHTML;
                   }
                   return hash;
             };
-            
+
             FILE_MANAGER.ContextMenu = {
                 context: null,
                 menus: {
@@ -1155,7 +1155,7 @@ echo $sHTML;
                         'name': 'Edit',
                         'icon': 'fa-edit',
                         'function': 'FILE_MANAGER.edit'
-            
+
                     },
                     'copy': {
                         'name': 'Copy',
@@ -1203,7 +1203,7 @@ echo $sHTML;
                         top: _y,
                         left: _x
                     }).show();
-            
+
                 },
                 renderHTML: function() {
                     var _html = [];
@@ -1220,7 +1220,7 @@ echo $sHTML;
                     $('.file-context-menu').remove();
                 }
             }
-            
+
             EBoostrapModal = {
                defaultOpts:{
                   title: 'Notice',
@@ -1246,7 +1246,7 @@ echo $sHTML;
                   $('#'  + this.defaultOpts.ID).show(function(){
                      $(this).addClass('in');
                   });
-                  
+
                   if (typeof(this.defaultOpts.onDisplay) == "function") {
                     //code
                     setTimeout(function(){
@@ -1267,17 +1267,17 @@ echo $sHTML;
                },
                _header: function()
                {
-                
+
                   var _close_button =  '<button data-dismiss="modal" class="x close" type="button" onclick="EBoostrapModal.remove();"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>';
                   if (this.defaultOpts.hasCloseButton == false) {
                     //code
                     _close_button = "";
                   }
-                  return '<div class="modal-header">' + 
+                  return '<div class="modal-header">' +
                     _close_button +
                      '<h4 class="modal-title">' +this.defaultOpts.title + ' <small></small></h4>' +
                                         '</div>';
-                                       
+
                },
                setContent: function(content){
                      $('#' + this.defaultOpts.ID + ' .modal-body').html(content);
@@ -1295,7 +1295,7 @@ echo $sHTML;
                         var _temp = this.defaultOpts.buttons[i];
                         _buttons += "<a class='btn "+_temp.class+"' name='"+i+"'>" + _temp.title+"</a>";
                     }
-                    
+
                    return '<div class="modal-footer">'+_buttons+'</div>';
                },
                remove: function(){
@@ -1349,7 +1349,7 @@ class FileManager
 	}
     public function makeURL()
     {
-        
+
     }
 	public function requireLogin()
 	{
@@ -1359,7 +1359,7 @@ class FileManager
 		);
 		if($aAccount['user'] == AUTHENTICATE_USER && $aAccount['password'] == AUTHENTICATE_PASSWORD)
 		{
-			
+
 		}
 		else
 		{
@@ -1402,17 +1402,17 @@ class FileManager
 					);
 				}
 			}
-			
+
 		}
 		return $aReturn;
 	}
 	public function download($sFileName)
 	{
-		if(ini_get('zlib.output_compression')) 
+		if(ini_get('zlib.output_compression'))
 		{
-			ini_set('zlib.output_compression', 'Off'); 
-		} 
-		ob_clean();   
+			ini_set('zlib.output_compression', 'Off');
+		}
+		ob_clean();
 		ob_end_flush();
 		$content_type = "application/force-download";
 		header('Content-Description: File Transfer');
@@ -1489,7 +1489,7 @@ class FileManager
 			}
 			else
 			{
-				
+
 				@mkdir($sFullPathFile,intval($sPerm, 8));
 				if(is_dir($sFullPathFile))
 				{
@@ -1499,9 +1499,9 @@ class FileManager
 				else
 				{
 					$aReturn['message'] = 'Cannot create folder in '. $sPath;
-				
+
 				}
-				
+
 			}
 		}
 		echo json_encode($aReturn);
@@ -1529,7 +1529,7 @@ class FileManager
 		$sPath = isset($_POST['path']) ? $_POST['path'] : "";
 		$sFileName = isset($_POST['file']) ? $_POST['file'] : "";
 		$sPerm = isset($_POST['perm']) ? $_POST['perm'] : "";
-		
+
 		$aReturn = array(
 			'status' => 'error',
 			'message' => 'Cannot create new file '. $sFileName,
@@ -1557,7 +1557,7 @@ class FileManager
 				@fclose($oFile);
 				if(file_exists($sFullPathFile))
 				{
-					
+
 					@chmod($sFullPathFile,intval($sPerm, 8));
 				}
 			}
@@ -1582,14 +1582,14 @@ class FileManager
 				);
 			}
 			else {
-				
+
 				if ($this->_unzip($aData, $sPath)) {
 					$aReturn = array(
 						'status' => 'success',
 						'message' => 'Completed Unzip file',
 					);
 				}
-				
+
 			}
 		}
 		echo json_encode($aReturn);
@@ -1598,7 +1598,7 @@ class FileManager
 	public function moveAction()
 	{
 		$this->copyAction();
-		
+
 	}
 	public function removeAction()
 	{
@@ -1641,11 +1641,11 @@ class FileManager
 		}
 		closedir($dir);
 		@rmdir($sSourcePath);
-	} 
+	}
 	public function copyAction()
 	{
 		$this->_bMoving = isset($_GET['moving']) ? $_GET['moving'] : 0;
-		
+
 		$sFolderPath = isset($_POST['file']) ? $_POST['file'] : "";
 		$sPath = isset($_POST['path']) ? $_POST['path'] : "";
 		$aData = isset($_POST['data']) ? $_POST['data'] : array();
@@ -1697,7 +1697,7 @@ class FileManager
 		{
 			if(file_put_contents($sFile,$sContent))
 			{
-				
+
 			}
 			$aReturn = array(
 				'status' => 'success',
@@ -1736,14 +1736,14 @@ class FileManager
 		closedir($dir);
 		if($this->_bMoving)
 		{
-			
+
 			@rmdir($sBaseSource);
 		}
-	} 
+	}
 	public function compressAction()
 	{
 		$sFileName = isset($_POST['file']) ? $_POST['file'] : "";
-		
+
 		if(!is_writable(dirname(($sFileName))))
 		{
 			echo json_encode(array(
@@ -1852,17 +1852,17 @@ class FileManager
 		else {
             if($bUpdatePath)
             {
-                $this->setPath($sPath);    
+                $this->setPath($sPath);
             }
 		}
 		$oHandler = @opendir($sPath);
-		
+
 		$aResult = array(
 			'folder' => array() ,
 			'file' => array() ,
 		);
 		if($oHandler){
-			 while (false !== ($hFile = readdir($oHandler))) 
+			 while (false !== ($hFile = readdir($oHandler)))
 			 {
 				if ($hFile == "." || $hFile == "..") {
 						continue;
@@ -1907,7 +1907,7 @@ class FileManager
 			}
 			@closedir($oHandler);
 		}
-		
+
 		return array_merge($aResult['folder'], $aResult['file']);
 	}
 	public function renderFolderView($aFiles, $bEcho = false)
@@ -1917,12 +1917,12 @@ class FileManager
 			if ($aFile['type'] != "folder" || $aFile['title'] == "." || $aFile['title'] == "..") continue;
 			$sLi.= '<li class="tree-item li-' . $aFile['type'] . ' collapsed" path="' . $aFile['full_path'] . '">
 								 <a class="file-name" href="javascript:void(0)">' . $aFile['title'] . '</a>
-							   
+
 							</li>';
 		}
         if(!empty($sLi))
         {
-            $sLi = '<ul class="tree-items-holder">' . $sLi . '</ul>';    
+            $sLi = '<ul class="tree-items-holder">' . $sLi . '</ul>';
         }
 		if ($bEcho) {
 			echo $sLi;
@@ -1976,13 +1976,13 @@ class FileManager
 	{
 		if(is_dir($sFile))
 		{
-			
+
 			return "Cannot read folder";
 		}
 		return file_get_contents($sFile);
 	}
-	function getMaximumFileUploadSize($bByteReturn = false)  
-    {  
+	function getMaximumFileUploadSize($bByteReturn = false)
+    {
         $mValue =  min(ini_get('post_max_size'), ini_get('post_max_size'));
 		if($bByteReturn)
 		{
